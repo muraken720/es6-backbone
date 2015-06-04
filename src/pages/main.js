@@ -1,4 +1,4 @@
-import {View} from 'backbone'
+import { View } from 'backbone'
 
 const mainTemplate = require('./main.html')
 
@@ -6,11 +6,11 @@ export default View.extend({
   template: mainTemplate,
 
   initialize () {
-    this.render()
+    this.listenTo(this.model, "change", this.render);
   },
 
   render() {
-    this.$el.html(this.template({name: 'muraken720'}))
+    this.$el.html(this.template(this.model.attributes))
     return this
   }
 
